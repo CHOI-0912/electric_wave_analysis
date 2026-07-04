@@ -1,0 +1,13 @@
+name,pooled_std_high,pooled_std_low,dof_high,dof_low
+Clean(1),0.0019017394906190297,0.0012100919019892124,1048,1276
+Clean(2),0.002060688817582279,0.0012996572949043172,1087,1301
+Nothing(1),0.0031056785840747657,0.0040673732561132695,1441,1595
+Nothing(2),0.0028313002541759356,0.003973749487998242,1441,1598
+Scratch0(1),nan,nan,0,0
+Scratch0(2),nan,nan,0,0
+Scratch30(1),nan,nan,0,0
+Scratch30(2),nan,nan,0,0
+Scratch60(1),nan,nan,0,0
+Scratch60(2),nan,nan,0,0
+Scratch90(1),nan,nan,0,0
+Scratch90(2),nan,nan,0,0

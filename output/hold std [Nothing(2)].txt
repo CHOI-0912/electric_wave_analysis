@@ -1,0 +1,24 @@
+=== Nothing(2) ===
+N = 10000
+TRIM_MARGIN = 230  (= plot_wave.py SMOOTH_WINDOW // 2)
+MIN_TRIMMED_LEN = 50
+original index <-> state index 는 1:1 매칭 (centered smoothing + edge padding)
+각 hold segment 양 끝 TRIM_MARGIN 샘플 trim 후 원 데이터로 std(ddof=1) 계산
+
+kind  raw[start-end]    trim[start-end]       N        mean           std
+low   [    0-   46]  (trim 후 길이 < 50, skip)
+low   [  122-  901] [  352-  671]   320   -0.001334    0.00411132
+high  [ 1137- 1885] [ 1367- 1655]   289    0.913557    0.00304783
+low   [ 2121- 2901] [ 2351- 2671]   321   -0.001704    0.00396453
+high  [ 3136- 3885] [ 3366- 3655]   290    0.913310    0.00273518
+low   [ 4122- 4901] [ 4352- 4671]   320   -0.002480    0.00403509
+high  [ 5137- 5885] [ 5367- 5655]   289    0.913578    0.00269161
+low   [ 6121- 6901] [ 6351- 6671]   321   -0.002867    0.00377815
+high  [ 7137- 7885] [ 7367- 7655]   289    0.913855    0.00277632
+low   [ 8121- 8901] [ 8351- 8671]   321   -0.002369    0.00397261
+high  [ 9137- 9885] [ 9367- 9655]   289    0.914090    0.00289135
+low   [ 9978- 9999]  (trim 후 길이 < 50, skip)
+
+-- pooled std  (sigma_p^2 = Sum((n_i-1) * sigma_i^2) / Sum(n_i-1)) --
+  high holds (after rising)  : pooled_std = 0.00283130   (total dof = 1441)
+  low  holds (after falling) : pooled_std = 0.00397375    (total dof = 1598)

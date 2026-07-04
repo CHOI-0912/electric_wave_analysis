@@ -1,0 +1,23 @@
+=== Scratch30(1) ===
+N = 10000
+TRIM_MARGIN = 230  (= plot_wave.py SMOOTH_WINDOW // 2)
+MIN_TRIMMED_LEN = 50
+original index <-> state index 는 1:1 매칭 (centered smoothing + edge padding)
+각 hold segment 양 끝 TRIM_MARGIN 샘플 trim 후 원 데이터로 std(ddof=1) 계산
+
+kind  raw[start-end]    trim[start-end]       N        mean           std
+low   [    0-   60]  (trim 후 길이 < 50, skip)
+low   [  812- 1015]  (trim 후 길이 < 50, skip)
+high  [ 1813- 1989]  (trim 후 길이 < 50, skip)
+low   [ 2824- 3016]  (trim 후 길이 < 50, skip)
+high  [ 3786- 3985]  (trim 후 길이 < 50, skip)
+low   [ 4825- 5014]  (trim 후 길이 < 50, skip)
+high  [ 5822- 6000]  (trim 후 길이 < 50, skip)
+low   [ 6830- 7017]  (trim 후 길이 < 50, skip)
+high  [ 7836- 8006]  (trim 후 길이 < 50, skip)
+low   [ 8825- 9015]  (trim 후 길이 < 50, skip)
+high  [ 9815- 9999]  (trim 후 길이 < 50, skip)
+
+-- pooled std  (sigma_p^2 = Sum((n_i-1) * sigma_i^2) / Sum(n_i-1)) --
+  high holds (after rising)  : pooled_std = nan   (total dof = 0)
+  low  holds (after falling) : pooled_std = nan    (total dof = 0)
